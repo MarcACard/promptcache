@@ -6,45 +6,14 @@ import { StorageKeys, createStorageHelper } from "@/utils/storage";
 import { type Prompt, type Prompts } from "@/types/";
 import { PromptForm } from "@/components/prompt-form";
 
-const promptStorage = createStorageHelper<Prompts>(StorageKeys.PROMPTS, []);
+import { useStorageSync } from "@/hooks/useStorageSync";
 
 function App() {
-  const [prompts, setPrompts] = useState<Prompts>([]);
-  const [isInitialized, setIsInitialized] = useState(false);
+  const [prompts, setPrompts] = useStorageSync<Prompt[]>(
+    StorageKeys.PROMPTS,
+    []
+  );
   const [page, setPage] = useState<"home" | "edit">("home");
-
-  // Initialize prompts from local storage.
-  // useEffect over intializer function b/c getPrompts() is async
-  useEffect(() => {
-    const fetchPrompts = async () => {
-      console.log("Fetching prompts from Local Storage");
-      try {
-        const savedPrompts = await promptStorage.get();
-        setPrompts(savedPrompts);
-      } catch (error) {
-        console.error("Error fetching prompts:", error);
-      } finally {
-        setIsInitialized(true);
-      }
-    };
-
-    fetchPrompts();
-  }, []);
-
-  // Sync Prompts with Local Storage
-  useEffect(() => {
-    const savePrompts = async () => {
-      if (!isInitialized) return;
-      console.log("Saving Prompts to Local Storage");
-      try {
-        await promptStorage.set(prompts);
-      } catch (error) {
-        console.error("Error saving prompts:", error);
-      }
-    };
-
-    savePrompts();
-  }, [prompts]);
 
   const onCopy = (prompt: string) => {
     navigator.clipboard.writeText(prompt);
