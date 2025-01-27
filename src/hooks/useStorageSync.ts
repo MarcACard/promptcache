@@ -10,6 +10,7 @@ export function useStorageSync<T>(storageKey: StorageItemKey, defaultValue: T) {
   // Fetch Initial Value from Storage
   useEffect(() => {
     const saveData = async () => {
+      console.log("Loading data from local storage");
       try {
         const data = await storage.get();
         setState(data);
@@ -21,12 +22,13 @@ export function useStorageSync<T>(storageKey: StorageItemKey, defaultValue: T) {
     };
 
     saveData();
-  });
+  }, []);
 
   // Sync State to Storage on Changes
   useEffect(() => {
     const saveData = async () => {
       if (!isInitialized) return;
+      console.log("Syncing data with Local Storage");
       try {
         await storage.set(state);
       } catch (error) {
