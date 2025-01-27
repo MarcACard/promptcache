@@ -24,7 +24,7 @@ export function PromptForm({
 
     try {
       createPrompt({
-        id: 1,
+        id: crypto.randomUUID(),
         title: title,
         icon: "",
         prompt: prompt,
@@ -71,7 +71,7 @@ export function PromptForm({
               onChange={(e) => setPrompt(e.target.value)}
             />
           </div>
-          <Button className="font-bold"> Save</Button>
+          <Button className="font-bold">Save</Button>
         </div>
       </form>
     </div>

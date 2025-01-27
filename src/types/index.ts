@@ -1,5 +1,5 @@
 export type Prompt = {
-  id: number;
+  id: string; // UUID
   title: string;
   icon: string;
   prompt: string;
