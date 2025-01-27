@@ -2,8 +2,8 @@ import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Plus, ArrowLeft, Menu, SquareTerminal } from "lucide-react";
-import { StorageKeys, createStorageHelper } from "@/utils/storage";
-import { type Prompt, type Prompts } from "@/types/";
+import { StorageKeys } from "@/utils/storage";
+import { type Prompt } from "@/types/";
 import { PromptForm } from "@/components/prompt-form";
 
 import { useStorageSync } from "@/hooks/useStorageSync";
@@ -79,7 +79,7 @@ function App() {
                 </div>
                 <div className="overflow-hidden">
                   <div className="text-sm font-semibold">{prompt.title}</div>
-                  <p className="truncate text-xs transition-colors text-muted-foreground group-focus:text-muted">
+                  <p className="line-clamp-2 text-xs transition-colors text-muted-foreground group-focus:text-muted">
                     {prompt.prompt}
                   </p>
                 </div>
