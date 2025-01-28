@@ -38,7 +38,7 @@ export function PromptItems({
             <ContextMenuTrigger asChild>
               <div
                 tabIndex={index + 1}
-                className="w-full cursor-pointer py-3 px-2 mt-1 rounded-md flex gap-2 transition-colors hover:bg-muted/80 focus-visible:bg-muted/80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-muted-foreground"
+                className="w-full cursor-pointer py-3 px-2 mt-1 rounded-md flex gap-2 transition-colors hover:bg-muted/80 focus-visible:bg-muted/80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-muted-foreground group"
                 onClick={() => onCopy(prompt.prompt)}
                 onKeyDown={(e) => {
                   if (e.key === "Enter") {
@@ -52,7 +52,7 @@ export function PromptItems({
                   <div className="relative">
                     <div className="size-6 border border-muted-foreground bg-background rounded-full mr-1" />
                     {prompt.favorite && (
-                      <Star className="size-6 absolute top-2 left-2 text-background fill-[#F1BF00]" />
+                      <Star className="size-6 absolute top-2 left-2 text-background fill-[#F1BF00] group-hover:text-muted/80 group-focus-visible:text-muted/80" />
                     )}
                   </div>
                 </div>

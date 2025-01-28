@@ -1,26 +1,28 @@
 import { Badge } from "@/components/ui/badge";
 import { type Category } from "@/types/";
 
+import { cn } from "@/utils";
+
 const categories: Category[] = [
   {
     id: "1",
     title: "Writing",
-    color: "",
+    color: "#5E6BD2",
   },
   {
     id: "2",
     title: "CodeGen",
-    color: "",
+    color: "#01A8C2",
   },
   {
     id: "3",
     title: "Debugging",
-    color: "",
+    color: "#EB5756",
   },
   {
     id: "5",
     title: "Design Review",
-    color: "",
+    color: "#F38E82",
   },
 ];
 
@@ -42,7 +44,10 @@ export function CategoryFilter() {
               onClick={() => filterPrompts(category.title)}
               className="cursor-pointer"
             >
-              <div className="size-2 bg-primary rounded-full mr-1" />
+              <div
+                style={{ backgroundColor: category.color }}
+                className="size-2 rounded-full mr-1"
+              />
               <span className="text-nowrap">{category.title}</span>
             </Badge>
           ))}
