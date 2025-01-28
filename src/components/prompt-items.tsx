@@ -22,10 +22,11 @@ export function PromptItems({
   const onCopy = async (prompt: string) => {
     try {
       await navigator.clipboard.writeText(prompt);
+      // Add extra buffer to ensure the prompt is _acutally_ copied.
+      // Remove timeout and it only works _sometimes_.
+      setTimeout(() => window.close(), 50);
     } catch (error) {
       console.log("Failed to Copy", error);
-    } finally {
-      window.close();
     }
   };
 
