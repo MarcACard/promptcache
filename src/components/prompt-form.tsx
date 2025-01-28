@@ -26,10 +26,8 @@ export function PromptForm({
       createPrompt({
         id: crypto.randomUUID(),
         title: title,
-        icon: "",
         prompt: prompt,
         dateCreated: Date.now(),
-        folder: "",
         favorite: false,
       });
     } catch (error) {

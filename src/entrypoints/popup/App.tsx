@@ -1,12 +1,13 @@
 import { useState } from "react";
 
-import { Button } from "@/components/ui/button";
-import { Plus, ArrowLeft, Menu, SquareTerminal } from "lucide-react";
+
+import { CategoryFilter } from "@/components/category-filter";
 import { StorageKeys } from "@/utils/storage";
 import { type Prompt } from "@/types/";
 import { PromptForm } from "@/components/prompt-form";
 
 import { useStorageSync } from "@/hooks/useStorageSync";
+import { PopupHeader } from "@/components/popup-header";
 
 function App() {
   const [prompts, setPrompts] = useStorageSync<Prompt[]>(
@@ -28,64 +29,41 @@ function App() {
   };
 
   return (
-    <div className="min-w-[400px]">
-      {/* Popup Header */}
-      <div className="flex items-center justify-between p-2 border-b">
-        <div>
-          <h1 className="text-lg font-bold">PromptCache</h1>
-        </div>
-        <div className="flex gap-2 transition-all duration-500 ease-in-out">
-          <Button
-            variant="outline"
-            size="xs"
-            className="size-8"
-            onClick={() => console.log("Settings Button Clicked")}
-          >
-            <Menu />
-          </Button>
-          <Button
-            variant={page === "home" ? "default" : "secondary"}
-            size="xs"
-            onClick={() => setPage(page === "home" ? "edit" : "home")}
-            className="flex items-cetner gap-2 transition-colors duration-300 ease-in-out"
-          >
-            {page === "home" ? <Plus /> : <ArrowLeft />}
-            <span className="text-sm">
-              {page === "home" ? "New Prompt" : "Back"}
-            </span>
-          </Button>
-        </div>
-      </div>
-
-      {/* Prompt Selection */}
+    <div className="min-w-[400px] h-[350px]">
+      <PopupHeader page={page} setPage={setPage} />
       {page === "home" && (
-        <div className="flex flex-col items-center mt-2 px-2 pb-2">
-          {prompts.length > 0 &&
-            prompts.map((prompt, index) => (
-              <div
-                key={prompt.id}
-                tabIndex={index + 1}
-                className="w-full py-3 px-2 rounded-md flex gap-2 outline-none transition-colors focus:bg-primary focus:text-primary-foreground hover:bg-primary/10 focus:hover:bg-primary group"
-                onClick={() => onCopy(prompt.prompt)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter") {
-                    e.preventDefault();
-                    onCopy(prompt.prompt);
-                  }
-                }}
-              >
-                <div className="flex items-center justify-center">
-                  <SquareTerminal />
+        <>
+          <CategoryFilter />
+          {/* Prompt Selection */}
+          <div className="flex flex-col items-center px-2 pb-2">
+            {prompts.length > 0 &&
+              prompts.map((prompt, index) => (
+                <div
+                  key={prompt.id}
+                  tabIndex={index + 1}
+                  className="w-full cursor-pointer py-3 px-2 mt-1 rounded-md flex gap-2 transition-colors hover:bg-muted/80 focus-visible:bg-muted/80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-muted-foreground"
+                  onClick={() => onCopy(prompt.prompt)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      onCopy(prompt.prompt);
+                    }
+                  }}
+                >
+                  <div className="flex items-center justify-center">
+                    {/* TODO: Dynamically set color based on category  */}
+                    <div className="size-6 border border-muted-foreground bg-background rounded-full mr-1" />
+                  </div>
+                  <div className="overflow-hidden">
+                    <div className="text-sm font-semibold">{prompt.title}</div>
+                    <p className="line-clamp-1 text-xs transition-colors text-muted-foreground">
+                      {prompt.prompt}
+                    </p>
+                  </div>
                 </div>
-                <div className="overflow-hidden">
-                  <div className="text-sm font-semibold">{prompt.title}</div>
-                  <p className="line-clamp-2 text-xs transition-colors text-muted-foreground group-focus:text-muted">
-                    {prompt.prompt}
-                  </p>
-                </div>
-              </div>
-            ))}
-        </div>
+              ))}
+          </div>
+        </>
       )}
 
       {/* Add Prompt */}
