@@ -70,15 +70,12 @@ function App() {
       {page === "home" && (
         <>
           <CategoryFilter />
-          {/* Prompt Selection */}
-          <div className="flex-1 overflow-y-auto px-2 pb-2">
-            <PromptItems
-              prompts={sortedPrompts}
-              onDeletePrompt={handleDeletePrompt}
-              onToggleFavorite={handleFavoriteToggle}
-              onEdit={handleEditPrompt}
-            />
-          </div>
+          <PromptItems
+            prompts={sortedPrompts}
+            onDeletePrompt={handleDeletePrompt}
+            onToggleFavorite={handleFavoriteToggle}
+            onEdit={handleEditPrompt}
+          />
         </>
       )}
       {page === "form" && (

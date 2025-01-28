@@ -31,7 +31,7 @@ export function PromptItems({
   };
 
   return (
-    <>
+    <div className="flex-1 overflow-y-auto px-2 pb-2">
       {prompts.length > 0 &&
         prompts.map((prompt, index) => (
           <ContextMenu key={prompt.id}>
@@ -91,6 +91,6 @@ export function PromptItems({
             </ContextMenuContent>
           </ContextMenu>
         ))}
-    </>
+    </div>
   );
 }
