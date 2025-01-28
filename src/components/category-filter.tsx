@@ -30,7 +30,10 @@ export function CategoryFilter() {
     console.log(`Filter Prompts to: ${category}`);
   };
   return (
-    <div className="p-2 border-b overflow-x-auto no-scrollbar">
+    <div
+      tabIndex={-1}
+      className="p-2 border-b overflow-x-auto no-scrollbar focus-visible:outline-none"
+    >
       <div className="flex gap-2 ">
         {categories.length > 0 &&
           categories.map((category) => (
