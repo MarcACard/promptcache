@@ -55,6 +55,11 @@ function App() {
     setPage("home");
   };
 
+  // Prioritize Favorited Prompts
+  const sortedPrompts = [...prompts].sort(
+    (a, b) => Number(b.favorite) - Number(a.favorite)
+  );
+
   return (
     <div className="min-w-[400px] h-[350px]">
       <PopupHeader
@@ -68,7 +73,7 @@ function App() {
           {/* Prompt Selection */}
           <div className="flex flex-col items-center px-2 pb-2">
             <PromptItems
-              prompts={prompts}
+              prompts={sortedPrompts}
               onDeletePrompt={handleDeletePrompt}
               onToggleFavorite={handleFavoriteToggle}
               onEdit={handleEditPrompt}
