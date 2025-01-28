@@ -4,13 +4,21 @@ import {
   TooltipTrigger,
   TooltipContent,
 } from "@/components/ui/tooltip";
-import { Plus, ArrowLeft, Menu, Settings, CircleAlert } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Plus, ArrowLeft, Menu, Settings, CircleAlert } from "lucide-react";
+
+import { Prompt } from "@/types";
+
+interface PopupHeaderProps {
+  page: "home" | "form";
+  setPage: React.Dispatch<React.SetStateAction<"home" | "form">>;
+  setPromptToEdit: React.Dispatch<React.SetStateAction<Prompt | null>>;
+}
 
 function PopupMenu() {
   return (
@@ -32,7 +40,10 @@ function PopupMenu() {
           <p>Menu</p>
         </TooltipContent>
       </Tooltip>
-      <DropdownMenuContent onCloseAutoFocus={(e) => e.preventDefault()} className="w-[150px]">
+      <DropdownMenuContent
+        onCloseAutoFocus={(e) => e.preventDefault()}
+        className="w-[150px]"
+      >
         <DropdownMenuItem>
           <Settings />
           <span>Options</span>
@@ -49,10 +60,18 @@ function PopupMenu() {
 export function PopupHeader({
   page,
   setPage,
-}: {
-  page: "home" | "edit";
-  setPage: React.Dispatch<React.SetStateAction<"home" | "edit">>;
-}) {
+  setPromptToEdit,
+}: PopupHeaderProps) {
+  const handlePageToggle = () => {
+    if (page === "home") {
+      setPromptToEdit(null);
+      setPage("form");
+    } else {
+      setPromptToEdit(null);
+      setPage("home");
+    }
+  };
+
   return (
     <div className="flex items-center justify-between p-2 border-b">
       <div>
@@ -63,7 +82,7 @@ export function PopupHeader({
         <Button
           variant={page === "home" ? "default" : "secondary"}
           size="xs"
-          onClick={() => setPage(page === "home" ? "edit" : "home")}
+          onClick={handlePageToggle}
           className="flex items-cetner gap-2 transition-colors duration-300 ease-in-out"
         >
           {page === "home" ? <Plus /> : <ArrowLeft />}

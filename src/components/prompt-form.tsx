@@ -7,42 +7,39 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 
-export function PromptForm({
-  createPrompt,
-  setPage,
-}: {
-  createPrompt: (newPrompt: Prompt) => void;
-  setPage: React.Dispatch<React.SetStateAction<"home" | "edit">>;
-}) {
-  const [title, setTitle] = useState("");
-  const [prompt, setPrompt] = useState("");
+interface PromptFormProps {
+  initialPrompt: Prompt | null;
+  onSubmitPrompt: (prompt: Prompt) => void;
+}
 
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+export function PromptForm({ initialPrompt, onSubmitPrompt }: PromptFormProps) {
+  const [title, setTitle] = useState(initialPrompt?.title || "");
+  const [prompt, setPrompt] = useState(initialPrompt?.prompt || "");
+
+  const isEditing = !!initialPrompt;
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!title.trim() || !prompt.trim()) return;
 
     try {
-      createPrompt({
-        id: crypto.randomUUID(),
+      onSubmitPrompt({
+        id: initialPrompt?.id ?? crypto.randomUUID(),
         title: title,
         prompt: prompt,
-        dateCreated: Date.now(),
-        favorite: false,
+        dateCreated: initialPrompt?.dateCreated ?? Date.now(),
+        favorite: initialPrompt?.favorite ?? false,
       });
     } catch (error) {
       console.error("Issue trying to create a prompt", error);
       return;
     }
-
-    setTitle("");
-    setPrompt("");
-    setPage("home");
   };
 
   return (
     <div className="p-4">
-      <form id="prompt-form" onSubmit={onSubmit}>
+      <form id="prompt-form" onSubmit={handleSubmit}>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
             <Label htmlFor="prompt-title" className="text-xs">
@@ -69,7 +66,7 @@ export function PromptForm({
               onChange={(e) => setPrompt(e.target.value)}
             />
           </div>
-          <Button className="font-bold">Save</Button>
+          <Button className="font-bold">{isEditing ? "Update" : "Save"}</Button>
         </div>
       </form>
     </div>
