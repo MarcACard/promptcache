@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-
 import { CategoryFilter } from "@/components/category-filter";
 import { StorageKeys } from "@/utils/storage";
 import { type Prompt } from "@/types/";

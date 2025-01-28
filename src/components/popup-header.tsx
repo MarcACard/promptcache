@@ -1,5 +1,51 @@
 import { Button } from "@/components/ui/button";
-import { Plus, ArrowLeft, Menu } from "lucide-react";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+} from "@/components/ui/tooltip";
+import { Plus, ArrowLeft, Menu, Settings, CircleAlert } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+
+// TODO: Fix issue with asChild on Dropdwown trigger menu
+function PopupMenu() {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant="outline"
+              size="xs"
+              className="size-8 outline-none"
+              onClick={() => console.log("Settings Button Clicked")}
+            >
+              <Menu />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Menu</p>
+          </TooltipContent>
+        </Tooltip>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="w-[150px]">
+        <DropdownMenuItem>
+          <Settings />
+          <span>Options</span>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <CircleAlert />
+          <span>Report Issue</span>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
 
 export function PopupHeader({
   page,
@@ -13,15 +59,8 @@ export function PopupHeader({
       <div>
         <h1 className="text-lg font-bold">PromptCache</h1>
       </div>
-      <div className="flex gap-2 transition-all duration-500 ease-in-out">
-        <Button
-          variant="outline"
-          size="xs"
-          className="size-8"
-          onClick={() => console.log("Settings Button Clicked")}
-        >
-          <Menu />
-        </Button>
+      <div className="flex gap-2">
+        <PopupMenu />
         <Button
           variant={page === "home" ? "default" : "secondary"}
           size="xs"
