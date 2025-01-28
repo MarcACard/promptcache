@@ -12,13 +12,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-// TODO: Fix issue with asChild on Dropdwown trigger menu
 function PopupMenu() {
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger>
-        <Tooltip>
-          <TooltipTrigger asChild>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <DropdownMenuTrigger asChild>
             <Button
               variant="outline"
               size="xs"
@@ -27,13 +26,13 @@ function PopupMenu() {
             >
               <Menu />
             </Button>
-          </TooltipTrigger>
-          <TooltipContent>
-            <p>Menu</p>
-          </TooltipContent>
-        </Tooltip>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-[150px]">
+          </DropdownMenuTrigger>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Menu</p>
+        </TooltipContent>
+      </Tooltip>
+      <DropdownMenuContent onCloseAutoFocus={(e) => e.preventDefault()} className="w-[150px]">
         <DropdownMenuItem>
           <Settings />
           <span>Options</span>
