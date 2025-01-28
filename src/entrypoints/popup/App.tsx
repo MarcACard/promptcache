@@ -61,7 +61,7 @@ function App() {
   );
 
   return (
-    <div className="min-w-[400px] h-[350px]">
+    <div className="min-w-[400px] h-[350px] flex flex-col">
       <PopupHeader
         page={page}
         setPage={setPage}
@@ -71,7 +71,7 @@ function App() {
         <>
           <CategoryFilter />
           {/* Prompt Selection */}
-          <div className="flex flex-col items-center px-2 pb-2">
+          <div className="flex-1 overflow-y-auto px-2 pb-2">
             <PromptItems
               prompts={sortedPrompts}
               onDeletePrompt={handleDeletePrompt}
