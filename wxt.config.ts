@@ -8,5 +8,13 @@ export default defineConfig({
   modules: ["@wxt-dev/module-react"],
   manifest: {
     permissions: ['storage'],
+    "commands": {
+      "open-popup": {
+        suggested_key: {
+          default: "Ctrl+Shift+P"
+        },
+        description: "Open Ext Popup"
+      }
+    }
   }
 });
