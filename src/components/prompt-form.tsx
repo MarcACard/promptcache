@@ -59,7 +59,7 @@ export function PromptForm({ initialPrompt, onSubmitPrompt }: PromptFormProps) {
             </Label>
             <Textarea
               id="full-prompt"
-              className="text-sm"
+              className="text-sm  max-h-[310px]"
               placeholder="You are a helpful assistant..."
               required={true}
               value={prompt}
