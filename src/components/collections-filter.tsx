@@ -1,9 +1,13 @@
 import { Badge } from "@/components/ui/badge";
-import { type Category } from "@/types/";
+import { type Collections } from "@/types/";
 
-import { cn } from "@/utils";
 
-const categories: Category[] = [
+const collections: Collections = [
+  {
+    id: "11",
+    title: "All",
+    color: "#5E6BD2",
+  },
   {
     id: "1",
     title: "Writing",
@@ -24,9 +28,14 @@ const categories: Category[] = [
     title: "Design Review",
     color: "#F38E82",
   },
+  {
+    id: "6",
+    title: "yeah",
+    color: "#F38E82",
+  },
 ];
 
-export function CategoryFilter() {
+export function CollectionsFilter() {
   // Filter Prompts
   const filterPrompts = (category: string) => {
     console.log(`Filter Prompts to: ${category}`);
@@ -37,18 +46,18 @@ export function CategoryFilter() {
       className="p-2 border-b overflow-x-auto no-scrollbar focus-visible:outline-none"
     >
       <div className="flex gap-2 ">
-        {categories.length > 0 &&
-          categories.map((category) => (
+        {collections.length > 0 &&
+          collections.map((collection) => (
             <Badge
               variant="outline"
-              onClick={() => filterPrompts(category.title)}
+              onClick={() => filterPrompts(collection.title)}
               className="cursor-pointer"
             >
               <div
-                style={{ backgroundColor: category.color }}
+                style={{ backgroundColor: collection.color }}
                 className="size-2 rounded-full mr-1"
               />
-              <span className="text-nowrap">{category.title}</span>
+              <span className="text-nowrap">{collection.title}</span>
             </Badge>
           ))}
       </div>

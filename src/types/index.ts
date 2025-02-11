@@ -4,15 +4,15 @@ export type Prompt = {
   prompt: string;
   dateCreated: number;
   favorite: boolean;
-  category_id?: string;
+  collectionId?: string;
 };
 
 export type Prompts = Prompt[];
 
-export type Category = {
+export type Collection = {
   id: string;
   title: string;
   color: string;
 };
 
-export type Categoires = Category[];
+export type Collections = Collection[];

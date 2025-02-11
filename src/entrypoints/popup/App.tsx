@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { CategoryFilter } from "@/components/category-filter";
+import { CollectionsFilter } from "@/components/collections-filter";
 import { StorageKeys } from "@/utils/storage";
 import { type Prompt } from "@/types/";
 import { PromptForm } from "@/components/prompt-form";
@@ -69,7 +69,7 @@ function App() {
       />
       {page === "home" && (
         <>
-          <CategoryFilter />
+          <CollectionsFilter />
           <PromptItems
             prompts={sortedPrompts}
             onDeletePrompt={handleDeletePrompt}
