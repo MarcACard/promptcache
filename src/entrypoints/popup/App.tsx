@@ -61,7 +61,7 @@ function App() {
   );
 
   return (
-    <div className="w-[450px] h-[350px] flex flex-col">
+    <div className="w-[550px] h-[350px] flex flex-col">
       <PopupHeader
         page={page}
         setPage={setPage}

@@ -1,12 +1,18 @@
-import { Pencil, Trash2, Star } from "lucide-react";
+import { Pencil, Trash2, Star, Folder, Plus } from "lucide-react";
 import {
   ContextMenu,
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuTrigger,
+  ContextMenuSub,
+  ContextMenuSubTrigger,
+  ContextMenuSubContent,
 } from "@/components/ui/context-menu";
+import { PopoverCollectionMenu } from "@/components/popover-collection"
 
 import { type Prompt, type Prompts } from "@/types";
+
+
 
 export function PromptItems({
   prompts,
@@ -50,7 +56,7 @@ export function PromptItems({
                 <div className="flex items-center justify-center">
                   {/* TODO: Dynamically set color based on category  */}
                   <div className="relative">
-                    <div className="size-6 border border-muted-foreground bg-background rounded-full mr-1" />
+                    <div className="size-6 border border-2 border-dashed bg-background rounded-full mr-1" />
                     {prompt.favorite && (
                       <Star className="size-6 absolute top-2 left-2 text-background fill-[#F1BF00] group-hover:text-muted/80 group-focus-visible:text-muted/80" />
                     )}
@@ -66,7 +72,7 @@ export function PromptItems({
                 </div>
               </div>
             </ContextMenuTrigger>
-            <ContextMenuContent className="w-36">
+            <ContextMenuContent className="w-40">
               <ContextMenuItem onClick={() => onToggleFavorite(prompt.id)}>
                 {prompt.favorite ? (
                   <>
@@ -80,6 +86,15 @@ export function PromptItems({
                   </>
                 )}
               </ContextMenuItem>
+              <ContextMenuSub>
+                <ContextMenuSubTrigger>
+                  <Folder className="size-4 mr-2" />
+                  <span>Collection</span>
+                </ContextMenuSubTrigger>
+                <ContextMenuSubContent className="w-52">
+                  <PopoverCollectionMenu />
+                </ContextMenuSubContent>
+              </ContextMenuSub>
               <ContextMenuItem onClick={() => onEdit(prompt)}>
                 <Pencil className="size-4 mr-2" />
                 <span>Edit</span>
