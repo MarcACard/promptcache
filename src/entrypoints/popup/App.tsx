@@ -1,11 +1,9 @@
 import { useState } from "react";
 
 import { CollectionsFilter } from "@/components/collections-filter";
-import { StorageKeys } from "@/utils/storage";
 import { type Prompt } from "@/types/";
 import { PromptForm } from "@/components/prompt-form";
 
-import { useStorageSync } from "@/hooks/useStorageSync";
 import { PopupHeader } from "@/components/popup-header";
 import { PromptItems } from "@/components/prompt-items";
 
