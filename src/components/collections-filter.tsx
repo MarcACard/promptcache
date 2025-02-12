@@ -1,37 +1,38 @@
 import { Badge } from "@/components/ui/badge";
+import { CollectionDot } from "@/components/ui/collection-dot";
 import { type Collections } from "@/types/";
 
 
-const collections: Collections = [
-  {
-    id: "11",
-    title: "All",
-    color: "#5E6BD2",
-  },
+const collections : Collections = [
   {
     id: "1",
+    title: "All",
+    color: "grey",
+  },
+  {
+    id: "11",
     title: "Writing",
-    color: "#5E6BD2",
+    color: "green",
   },
   {
     id: "2",
     title: "CodeGen",
-    color: "#01A8C2",
+    color: "purple",
   },
   {
     id: "3",
     title: "Debugging",
-    color: "#EB5756",
+    color: "teal",
   },
   {
     id: "5",
     title: "Design Review",
-    color: "#F38E82",
+    color: "orange",
   },
   {
     id: "6",
-    title: "yeah",
-    color: "#F38E82",
+    title: "Language Tutor",
+    color: "pink",
   },
 ];
 
@@ -53,10 +54,7 @@ export function CollectionsFilter() {
               onClick={() => filterPrompts(collection.title)}
               className="cursor-pointer"
             >
-              <div
-                style={{ backgroundColor: collection.color }}
-                className="size-2 rounded-full mr-1"
-              />
+              <CollectionDot className= "mr-1" size="xs" bgColor={collection.color}/>
               <span className="text-nowrap">{collection.title}</span>
             </Badge>
           ))}

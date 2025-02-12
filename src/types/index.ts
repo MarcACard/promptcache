@@ -7,12 +7,19 @@ export type Prompt = {
   collectionId?: string;
 };
 
-export type Prompts = Prompt[];
-
 export type Collection = {
   id: string;
   title: string;
-  color: string;
+  color:
+    | "purple"
+    | "teal"
+    | "green"
+    | "yellow"
+    | "orange"
+    | "pink"
+    | "red"
+    | "grey";
 };
 
+export type Prompts = Prompt[];
 export type Collections = Collection[];
