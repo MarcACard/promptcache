@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { CollectionsFilter } from "@/components/collections-filter";
+import { CollectionList } from "@/components/collection-list";
 import { type Prompt } from "@/types/";
 import { PromptForm } from "@/components/prompt-form";
 
@@ -8,8 +8,18 @@ import { PopupHeader } from "@/components/popup-header";
 import { PromptItems } from "@/components/prompt-items";
 
 import { usePrompts } from "@/hooks/usePrompts";
+import { useCollections } from "@/hooks/useCollections";
 
 function App() {
+  const {
+    collections,
+    selectedCollectionId,
+    handleCreateCollection,
+    handleUpdateCollection,
+    handleDeleteCollection,
+    getCollectionById,
+    selectCollection,
+  } = useCollections();
   const {
     prompts,
     promptToEdit,
@@ -18,7 +28,8 @@ function App() {
     handleUpdatePrompt,
     handleDeletePrompt,
     handleFavoriteToggle,
-  } = usePrompts();
+    handlePromptToCollection
+  } = usePrompts(selectedCollectionId);
 
   const [page, setPage] = useState<"home" | "form">("home");
 
@@ -46,12 +57,22 @@ function App() {
       />
       {page === "home" && (
         <>
-          <CollectionsFilter />
+          <CollectionList
+            collections={collections}
+            onCollectionSelect={selectCollection}
+            onCreateCollection={handleCreateCollection}
+            onUpdateCollection={handleUpdateCollection}
+            onDeleteCollection={handleDeleteCollection}
+            selectedCollectionId={selectedCollectionId}
+          />
           <PromptItems
             prompts={prompts}
             onDeletePrompt={handleDeletePrompt}
             onToggleFavorite={handleFavoriteToggle}
+            onPromptToCollection={handlePromptToCollection}
             onEdit={handleEditPrompt}
+            collections={collections}
+            getCollectionById={getCollectionById}
           />
         </>
       )}

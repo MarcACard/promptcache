@@ -7,9 +7,9 @@ const dotVariants = cva(
   {
     variants: {
       variant: {
-        default: "",
+        default: "border",
         solid: "border border-2",
-        outline: "border border-dotted border-2",
+        outline: "border border-dashed border-2",
       },
       size: {
         xs: "w-2 h-2",
@@ -17,14 +17,14 @@ const dotVariants = cva(
         default: "w-6 h-6",
       },
       bgColor: {
-        purple: "bg-collection-purple",
-        teal: "bg-collection-teal",
-        green: "bg-collection-green",
-        yellow: "bg-collection-yellow",
-        orange: "bg-collection-orange",
-        pink: "bg-collection-pink",
-        red: "bg-collection-red",
-        grey: "bg-collection-grey"
+        purple: "bg-collection-purple border-collection-purple",
+        teal: "bg-collection-teal border-collection-teal",
+        green: "bg-collection-green border-collection-green",
+        yellow: "bg-collection-yellow border-collection-yellow",
+        orange: "bg-collection-orange border-collection-orange",
+        pink: "bg-collection-pink border-collection-pink",
+        red: "bg-collection-red border-collection-red",
+        grey: "bg-collection-grey border-collection-grey"
       },
     },
     defaultVariants: {

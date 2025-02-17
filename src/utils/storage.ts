@@ -2,6 +2,7 @@ import { storage, StorageItemKey } from "wxt/storage";
 
 export const StorageKeys: Record<string, StorageItemKey> = {
   PROMPTS: "local:promptcache_prompts",
+  COLLECTIONS: "local:promptcache_collections",
   THEME: "local:promptcache_theme",
   USER_SETTINGS: "local:promptcache_user_settings",
 };

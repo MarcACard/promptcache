@@ -1,55 +1,72 @@
-import { ContextMenuItem } from "@/components/ui/context-menu";
-import { Plus } from "lucide-react";
+import { Check } from "lucide-react";
 import {
   Command,
-  CommandGroup,
   CommandInput,
   CommandItem,
   CommandList,
-} from "./ui/command";
+  CommandEmpty,
+} from "@/components/ui/command";
+import { type Collections } from "@/types";
+import { CollectionDot } from "./ui/collection-dot";
 
-export function PopoverCollectionMenu() {
-  const [searchInput, setSearchInput] = useState("");
+interface PopoverCollectionMenuProps {
+  collections: Collections;
+  currentCollectionId: string;
+  onCollectionSelect: (collectionId: string) => void;
+}
 
-  const handleInputValue = (e: string) => {
-    console.log(e);
-    setSearchInput(e);
-  };
+export function PopoverCollectionMenu({
+  collections,
+  currentCollectionId,
+  onCollectionSelect,
+}: PopoverCollectionMenuProps) {
+  const [searchQuery, setSearchQuery] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      inputRef.current?.focus();
+    }, 100);
+
+    return () => clearTimeout(timeoutId);
+  }, []);
+
+  const modifiedCollections = collections.filter((c) => c.id !== "0");
+
   return (
-    <>
-      <Command>
-        <CommandInput
-          value={searchInput}
-          onValueChange={handleInputValue}
-          placeholder="Search Collections..."
-          className="h-9"
-        />
-        <CommandList>
-          <CommandGroup>
-            <CommandItem>
-              <div className="size-3 bg-destructive rounded-full" />
-              Writing
+    <Command className="w-40">
+      <CommandInput
+        value={searchQuery}
+        onValueChange={setSearchQuery}
+        icon={null}
+        placeholder="Search Collections..."
+        className="h-8"
+        ref={inputRef}
+      />
+      <CommandList>
+        {modifiedCollections.length > 0 &&
+          modifiedCollections.map((collection) => (
+            <CommandItem
+              key={collection.id}
+              onSelect={() => onCollectionSelect(collection.id)}
+            >
+              <CollectionDot
+                variant="default"
+                size="sm"
+                bgColor={collection.color}
+              />
+              <span className="truncate flex-1">{collection.title}</span>
+              <Check
+                className={cn(
+                  "ml-auto",
+                  currentCollectionId === collection.id
+                    ? "opacity-100"
+                    : "opacity-0"
+                )}
+              />
             </CommandItem>
-            <CommandItem>
-              <div className="size-3 bg-orange-300 rounded-full" />
-              Codegen
-            </CommandItem>
-            <CommandItem>
-              <div className="size-3 bg-teal-300 rounded-full" />
-              Debugging
-            </CommandItem>
-            <CommandItem>
-              <div className="size-3 bg-lime-300 rounded-full" />
-              GenArt
-            </CommandItem>
-            <CommandItem value={searchInput}>
-              <Plus className="size-3  mr-1.5" />
-              <span className="font-medium">Create New:</span>"{searchInput}"
-            </CommandItem>
-            {/* <CommandEmpty>Create new</CommandEmpty> */}
-          </CommandGroup>
-        </CommandList>
-      </Command>
-    </>
+          ))}
+      </CommandList>
+    </Command>
   );
 }
