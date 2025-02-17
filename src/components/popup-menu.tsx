@@ -4,9 +4,12 @@ import {
   CircleAlert,
   LifeBuoy,
   Monitor,
+  MessageSquare,
   Moon,
   Sun,
 } from "lucide-react";
+
+import { openUrl } from "@/utils";
 
 import { type Theme, useTheme } from "@/components/theme-provider";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -89,18 +92,26 @@ export function PopupMenu() {
         onCloseAutoFocus={(e) => e.preventDefault()}
         className="w-52"
       >
-        <DropdownMenuItem>
+        {/* <DropdownMenuItem>
           <Settings />
           <span>Options</span>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
+        </DropdownMenuItem> */}
+        <DropdownMenuItem
+          onSelect={() =>
+            openUrl("https://github.com/MarcACard/promptcache/issues")
+          }
+        >
           <CircleAlert />
-          <span>Report Issue</span>
+          <span>Report issue</span>
         </DropdownMenuItem>
-        <DropdownMenuItem>
+        <DropdownMenuItem onSelect={() => openUrl("https://x.com/marcard")}>
+          <MessageSquare />
+          <span>Say hello</span>
+        </DropdownMenuItem>
+        {/* <DropdownMenuItem>
           <LifeBuoy />
           <span>Help</span>
-        </DropdownMenuItem>
+        </DropdownMenuItem> */}
         <DropdownMenuSeparator />
         <ThemeSelector />
       </DropdownMenuContent>
