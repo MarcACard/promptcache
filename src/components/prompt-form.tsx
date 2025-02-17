@@ -30,6 +30,7 @@ export function PromptForm({ initialPrompt, onSubmitPrompt }: PromptFormProps) {
         prompt: prompt,
         dateCreated: initialPrompt?.dateCreated ?? Date.now(),
         favorite: initialPrompt?.favorite ?? false,
+        collectionId: initialPrompt?.collectionId ?? undefined
       });
     } catch (error) {
       console.error("Issue trying to create a prompt", error);
