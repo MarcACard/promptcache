@@ -108,9 +108,12 @@ function CollectionBadge({
   onUpdate,
   onDelete,
 }: CollectionBadgeProps) {
-  // We must control popover state manually so that we can close the 
+  // We must control popover state manually so that we can close the
   // popover if a user edits & saves changes.
   const [isOpen, setIsOpen] = useState(false);
+
+  // Disable Context Menu Items for default collection (ALL)
+  const isDefaultCollection = collection.id === "0";
 
   return (
     <Popover modal={true} open={isOpen} onOpenChange={setIsOpen}>
@@ -137,12 +140,15 @@ function CollectionBadge({
 
         <ContextMenuContent onCloseAutoFocus={(e) => e.preventDefault()}>
           <PopoverTrigger asChild>
-            <ContextMenuItem>
+            <ContextMenuItem disabled={isDefaultCollection}>
               <Pencil className="size-4 mr-2" />
               <span>Edit</span>
             </ContextMenuItem>
           </PopoverTrigger>
-          <ContextMenuItem onSelect={() => onDelete(collection.id)}>
+          <ContextMenuItem
+            onSelect={() => onDelete(collection.id)}
+            disabled={isDefaultCollection}
+          >
             <Trash2 className="size-4 mr-2" />
             <span>Delete</span>
           </ContextMenuItem>
