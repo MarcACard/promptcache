@@ -34,10 +34,10 @@ export function PopupHeader({
       <div className="flex gap-2">
         <PopupMenu />
         <Button
-          variant={page === "home" ? "default" : "secondary"}
+          variant={page === "home" ? "outline" : "secondary"}
           size="xs"
           onClick={handlePageToggle}
-          className="flex items-cetner gap-2 transition-colors duration-300 ease-in-out"
+          className="flex items-center gap-2  shadow-sm hover:shadow-none"
         >
           {page === "home" ? <Plus /> : <ArrowLeft />}
           <span className="text-sm">

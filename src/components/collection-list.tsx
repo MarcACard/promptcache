@@ -72,7 +72,7 @@ function CreateCollection({ onCreateCollection }: CreateCollectionProps) {
       <PopoverTrigger>
         <Badge
           variant="outline"
-          className="text-muted-foreground border border-dashed border-input cursor-pointer bg-background hover:bg-accent hover:text-foreground hover:border-solid"
+          className="border border-input cursor-pointer bg-background shadow-sm hover:shadow-none hover:bg-accent hover:text-accent-foreground"
         >
           <Plus className="size-4" />
         </Badge>
@@ -117,7 +117,7 @@ function CollectionBadge({
           <ContextMenuTrigger asChild>
             <div onClick={() => onSelected(collection.id)}>
               <Badge
-                variant={isSelected ? "default" : "outline"}
+                variant={isSelected ? "secondary" : "outline"}
                 className="cursor-pointer"
               >
                 <CollectionDot
