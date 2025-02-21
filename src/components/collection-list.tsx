@@ -108,6 +108,8 @@ function CollectionBadge({
   onUpdate,
   onDelete,
 }: CollectionBadgeProps) {
+  // We must control popover state manually so that we can close the 
+  // popover if a user edits & saves changes.
   const [isOpen, setIsOpen] = useState(false);
 
   return (
