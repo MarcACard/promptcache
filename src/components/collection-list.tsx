@@ -69,10 +69,10 @@ function CreateCollection({ onCreateCollection }: CreateCollectionProps) {
 
   return (
     <Popover open={isOpen} onOpenChange={setIsOpen}>
-      <PopoverTrigger>
+      <PopoverTrigger className="focus:outline-none group">
         <Badge
           variant="outline"
-          className="border border-input cursor-pointer bg-background shadow-sm hover:shadow-none hover:bg-accent hover:text-accent-foreground"
+          className="border border-input cursor-pointer bg-background shadow-sm hover:shadow-none hover:bg-accent hover:text-accent-foreground group-focus:ring-1 group-focus:ring-ring"
         >
           <Plus className="size-4" />
         </Badge>

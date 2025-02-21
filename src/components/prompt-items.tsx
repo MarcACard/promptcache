@@ -29,7 +29,7 @@ type PromptItemProps = {
 function PromptItem({ prompt, onCopy, collection, ...props }: PromptItemProps) {
   return (
     <div
-      className="w-full cursor-pointer py-3 px-2 mt-1 rounded-md flex gap-2 transition-colors hover:bg-muted/80 focus-visible:bg-muted/80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-muted-foreground group"
+      className="w-full cursor-pointer py-3 px-2 mt-1 rounded-md flex gap-2 transition-colors hover:bg-muted/80 focus-visible:bg-muted/80 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring group"
       onClick={() => onCopy(prompt.prompt)}
       onKeyDown={(e) => {
         if (e.key === "Enter") {
