@@ -112,8 +112,8 @@ export function PopupMenu() {
           <LifeBuoy />
           <span>Help</span>
         </DropdownMenuItem> */}
-        <DropdownMenuSeparator />
-        <ThemeSelector />
+        {/* <DropdownMenuSeparator />
+        <ThemeSelector /> */}
       </DropdownMenuContent>
     </DropdownMenu>
   );

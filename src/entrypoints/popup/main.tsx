@@ -8,7 +8,7 @@ import { TooltipProvider } from "@/components/ui/tooltip.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <ThemeProvider defaultTheme="dark">
+    <ThemeProvider defaultTheme="light">
       <TooltipProvider>
         <App />
       </TooltipProvider>
