@@ -40,7 +40,7 @@ export function CollectionList({
   return (
     <div
       tabIndex={-1}
-      className="p-2 border-b overflow-x-auto no-scrollbar focus-visible:outline-none"
+      className="flex-shrink-0 px-2 py-1 border-b overflow-x-auto no-scrollbar focus-visible:outline-none"
     >
       <div className="flex gap-2 ">
         <CreateCollection onCreateCollection={onCreateCollection} />
