@@ -2,6 +2,10 @@ import { Plus, ArrowLeft } from "lucide-react";
 
 import { PopupMenu } from "@/components/popup-menu";
 import { Button } from "@/components/ui/button";
+import {
+  PromptCacheIcon,
+  PromptCacheWordmark,
+} from "@/components/ui/promptcache-icon";
 
 import { Prompt } from "@/types";
 
@@ -28,8 +32,8 @@ export function PopupHeader({
 
   return (
     <div className="flex items-center justify-between p-2 border-b">
-      <div>
-        <h1 className="text-lg font-bold">PromptCache</h1>
+      <div className="flex items-center">
+        <PromptCacheWordmark className="h-7 text-black" />
       </div>
       <div className="flex gap-2">
         <PopupMenu />

@@ -1,19 +1,12 @@
-import { MessageCircle } from "lucide-react";
-
+import { PromptCacheIcon } from "@/components/ui/promptcache-icon";
 import { Arrow, ArrowTwist } from "@/components/ui/arrow";
 
 export function PopupWelcome() {
   return (
     <>
       <div className="flex justify-center items-center h-full">
-        <div className="mb-8">
-          <div className="flex justify-center items-center mb-4">
-            {/* <MessageCircle className="mr-1 size-7" /> */}
-            <span className="text-2xl font-bold font-brand tracking-tight">
-              [Logo] PromptCache
-            </span>
-          </div>
-          <p className="text-base font-semibold text-muted-foreground italic text-center">
+        <div>
+          <p className="text-base font-semibold text-center">
             Your prompt library, stored in browser, always available.
           </p>
         </div>
