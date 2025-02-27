@@ -43,7 +43,7 @@ export function CollectionForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex items-center">
+    <form onSubmit={handleSubmit} autoComplete="off" className="flex items-center">
       <div className="mr-2">
         <Label className="sr-only" htmlFor="collection-color">
           Color

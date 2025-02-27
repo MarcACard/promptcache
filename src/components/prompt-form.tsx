@@ -40,7 +40,7 @@ export function PromptForm({ initialPrompt, onSubmitPrompt }: PromptFormProps) {
 
   return (
     <div className="p-4">
-      <form id="prompt-form" onSubmit={handleSubmit}>
+      <form id="prompt-form" onSubmit={handleSubmit} autoComplete="off">
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
             <Label htmlFor="prompt-title" className="text-xs">
