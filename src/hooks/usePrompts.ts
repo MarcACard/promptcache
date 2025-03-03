@@ -95,8 +95,14 @@ export function usePrompts(selectedCollectionId: string = "0") {
     );
   }, [prompts, selectedCollectionId]);
 
+  /**
+   * Determines if there are any prompts created, regardless of filters
+   */
+  const hasAnyPrompts = prompts.length > 0;
+
   return {
     prompts: filteredAndSortedPrompts,
+    hasAnyPrompts,
     promptToEdit,
     setPromptToEdit,
     handleCreatePrompt,

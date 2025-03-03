@@ -22,6 +22,7 @@ function App() {
   } = useCollections();
   const {
     prompts,
+    hasAnyPrompts,
     promptToEdit,
     setPromptToEdit,
     handleCreatePrompt,
@@ -65,7 +66,19 @@ function App() {
             onDeleteCollection={handleDeleteCollection}
             selectedCollectionId={selectedCollectionId}
           />
-          {prompts.length > 0 ? (
+
+          {!hasAnyPrompts && <PopupWelcome />}
+
+          {hasAnyPrompts && prompts.length === 0 && (
+            <div className="flex flex-col items-center justify-center h-full gap-2  mb-6">
+              <h2 className="text-lg font-semibold ">No prompts found</h2>
+              <span className="text-muted-foreground">
+                Select another collection or add a prompt to this collection.
+              </span>
+            </div>
+          )}
+
+          {prompts.length > 0 && (
             <PromptItems
               prompts={prompts}
               onDeletePrompt={handleDeletePrompt}
@@ -75,8 +88,6 @@ function App() {
               collections={collections}
               getCollectionById={getCollectionById}
             />
-          ) : (
-            <PopupWelcome />
           )}
         </>
       )}
