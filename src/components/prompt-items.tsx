@@ -53,7 +53,7 @@ function PromptItem({ prompt, onCopy, collection, ...props }: PromptItemProps) {
             <CollectionDot className="mr-1" variant="outline" />
           )}
           {prompt.favorite && (
-            <Star className="size-6 absolute top-2 left-2 text-background fill-[#F1BF00] group-hover:text-muted/80 group-focus-visible:text-muted/80" />
+            <Star className="size-6 absolute top-2 left-2 text-background fill-yellow-400 group-hover:text-muted/80 group-focus-visible:text-muted/80" />
           )}
         </div>
       </div>

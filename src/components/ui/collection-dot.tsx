@@ -17,14 +17,15 @@ const dotVariants = cva(
         default: "w-6 h-6",
       },
       bgColor: {
-        purple: "bg-collection-purple border-collection-purple",
-        teal: "bg-collection-teal border-collection-teal",
-        green: "bg-collection-green border-collection-green",
-        yellow: "bg-collection-yellow border-collection-yellow",
-        orange: "bg-collection-orange border-collection-orange",
-        pink: "bg-collection-pink border-collection-pink",
-        red: "bg-collection-red border-collection-red",
-        grey: "bg-collection-grey border-collection-grey"
+        blue: "bg-primary border-primary",
+        purple: "bg-violet-500 border-violet-500",
+        teal: "bg-teal-300 border-teal-300",
+        green: "bg-emerald-500 border-emerald-500",
+        yellow: "bg-yellow-400 border-yellow-400",
+        orange: "bg-orange-400 border-orange-400",
+        pink: "bg-pink-400 border-pink-400",
+        red: "bg-red-500 border-red-500",
+        grey: "bg-neutral-500 border-neutral-500"
       },
     },
     defaultVariants: {

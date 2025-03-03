@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import { Pencil, Plus, Trash2 } from "lucide-react";
+import { cn } from "@/utils";
 
 import { CollectionForm } from "@/components/collection-form";
 import {
@@ -123,10 +124,14 @@ function CollectionBadge({
             <div onClick={() => onSelected(collection.id)}>
               <Badge
                 variant={isSelected ? "secondary" : "outline"}
-                className="cursor-pointer"
+                className={cn(
+                  "cursor-pointer group",
+                  isSelected && "border-base",
+                  !isSelected && "text-muted-foreground hover:text-secondary-foreground hover:bg-secondary/80"
+                )}
               >
                 <CollectionDot
-                  className="mr-1"
+                  className={cn("mr-1", !isSelected && "opacity-50 group-hover:opacity-100")}
                   size="xs"
                   bgColor={collection.color}
                 />

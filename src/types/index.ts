@@ -8,17 +8,18 @@ export type Prompt = {
 };
 
 export const ColorSet = [
-  "purple",
-  "teal",
-  "green",
-  "yellow",
-  "orange",
-  "pink",
   "red",
-  "grey"
+  "orange",
+  "yellow",
+  "green",
+  "teal",
+  "blue",
+  "purple",
+  "pink",
+  "grey",
 ] as const;
 
-export type ColorSetType = typeof ColorSet[number]
+export type ColorSetType = (typeof ColorSet)[number];
 
 export type Collection = {
   id: string;
