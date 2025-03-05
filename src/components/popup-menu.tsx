@@ -4,10 +4,10 @@ import {
   CircleAlert,
   LifeBuoy,
   Monitor,
-  MessageSquare,
   Moon,
   Sun,
 } from "lucide-react";
+import { SiX } from "@icons-pack/react-simple-icons";
 
 import { openUrl } from "@/utils";
 
@@ -25,7 +25,10 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuLabel,
+  DropdownMenuShortcut,
 } from "@/components/ui/dropdown-menu";
+import { PromptCacheWordmarkPanda } from "./ui/promptcache-icon";
 
 function ThemeSelector() {
   const { theme, setTheme } = useTheme();
@@ -96,6 +99,10 @@ export function PopupMenu() {
           <Settings />
           <span>Options</span>
         </DropdownMenuItem> */}
+        <DropdownMenuLabel className="px-1 ">
+          <PromptCacheWordmarkPanda className="h-5" />
+        </DropdownMenuLabel>
+        <DropdownMenuSeparator />
         <DropdownMenuItem
           onSelect={() =>
             openUrl("https://github.com/MarcACard/promptcache/issues")
@@ -105,13 +112,14 @@ export function PopupMenu() {
           <span>Report issue</span>
         </DropdownMenuItem>
         <DropdownMenuItem onSelect={() => openUrl("https://x.com/marcard")}>
-          <MessageSquare />
+          <SiX />
           <span>Say hello</span>
         </DropdownMenuItem>
-        {/* <DropdownMenuItem>
+        <DropdownMenuItem>
           <LifeBuoy />
           <span>Help</span>
-        </DropdownMenuItem> */}
+          <DropdownMenuShortcut>?</DropdownMenuShortcut>
+        </DropdownMenuItem>
         {/* <DropdownMenuSeparator />
         <ThemeSelector /> */}
       </DropdownMenuContent>
