@@ -39,9 +39,9 @@ export function PromptForm({ initialPrompt, onSubmitPrompt }: PromptFormProps) {
   };
 
   return (
-    <div className="p-4">
+    <div className="px-4 py-6">
       <form id="prompt-form" onSubmit={handleSubmit} autoComplete="off">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-5">
           <div className="flex flex-col gap-2">
             <Label htmlFor="prompt-title" className="text-xs">
               Prompt Title

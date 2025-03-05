@@ -33,12 +33,14 @@ export function PopupHeader({
 
   return (
     <div className="flex items-center justify-between p-2 border-b gap-24">
-      <div className="flex-1 rounded-md border border-input">
+      <div className="rounded-md border border-input">
         <Input
           value={searchValue}
           onChange={handleSearchChange}
-          className="border-transparent text-sm h-8"
+          className="border-transparent text-sm h-8 w-64"
           placeholder="Search..."
+          autoFocus={true}
+          disabled={page === "form"}
         />
       </div>
       <div className="flex gap-2">
