@@ -5,16 +5,16 @@ export default defineConfig({
   srcDir: "src",
   outDir: "dist",
   extensionApi: "chrome",
-  modules: ["@wxt-dev/module-react"],
+  modules: ["@wxt-dev/module-react", "@wxt-dev/auto-icons"],
   manifest: {
-    permissions: ['storage'],
-    "commands": {
+    permissions: ["storage"],
+    commands: {
       "open-popup": {
         suggested_key: {
-          default: "Ctrl+Shift+P"
+          default: "Ctrl+Shift+P",
         },
-        description: "Open Ext Popup"
-      }
-    }
-  }
+        description: "Open Ext Popup",
+      },
+    },
+  },
 });
