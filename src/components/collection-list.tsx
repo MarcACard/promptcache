@@ -131,7 +131,7 @@ function CollectionBadge({
                 )}
               >
                 <CollectionDot
-                  className={cn("mr-1", !isSelected && "opacity-50 group-hover:opacity-100")}
+                  className={cn("mr-2", !isSelected && "opacity-50 group-hover:opacity-100")}
                   size="xs"
                   bgColor={collection.color}
                 />
