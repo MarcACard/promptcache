@@ -9,9 +9,13 @@ import { type Prompt } from "@/types/";
  * Provides methods for creating, updating, deleting, and sorting prompts (collections & favorites)
  *
  * @param selectedCollectionId - The ID of the currently selected collection to filter prompts
+ * @param searchValue - A string provided by the user to further filter prompts
  * @returns An object containing prompts and handlers to assist with prompt management.
  */
-export function usePrompts(selectedCollectionId: string = "0") {
+export function usePrompts(
+  selectedCollectionId: string = "0",
+  searchValue: string = ""
+) {
   const [prompts, setPrompts] = useStorageSync<Prompt[]>(
     StorageKeys.PROMPTS,
     []
@@ -85,15 +89,25 @@ export function usePrompts(selectedCollectionId: string = "0") {
    * Favorites appear first.
    */
   const filteredAndSortedPrompts = useMemo(() => {
-    const filtered =
+    // Filter by Collection
+    let filtered =
       selectedCollectionId === "0"
         ? prompts
         : prompts.filter((p) => p.collectionId === selectedCollectionId);
 
+    // Filter by Search TODO: Improve the search methodology, fuzzy search?
+    const searchCleaned = searchValue.trim().toLowerCase();
+    if (searchCleaned) {
+      filtered = filtered.filter((p) =>
+        p.title.trim().toLowerCase().includes(searchCleaned)
+      );
+    }
+
+    // Sort Favorites to the Top
     return [...filtered].sort(
       (a, b) => Number(b.favorite) - Number(a.favorite)
     );
-  }, [prompts, selectedCollectionId]);
+  }, [prompts, selectedCollectionId, searchValue]);
 
   /**
    * Determines if there are any prompts created, regardless of filters

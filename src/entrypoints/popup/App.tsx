@@ -11,6 +11,7 @@ import { usePrompts } from "@/hooks/usePrompts";
 import { useCollections } from "@/hooks/useCollections";
 
 function App() {
+  const [searchValue, setSearchValue] = useState("");
   const {
     collections,
     selectedCollectionId,
@@ -30,7 +31,7 @@ function App() {
     handleDeletePrompt,
     handleFavoriteToggle,
     handlePromptToCollection,
-  } = usePrompts(selectedCollectionId);
+  } = usePrompts(selectedCollectionId, searchValue);
 
   const [page, setPage] = useState<"home" | "form">("home");
 
@@ -55,6 +56,10 @@ function App() {
         page={page}
         setPage={setPage}
         setPromptToEdit={setPromptToEdit}
+        searchValue={searchValue}
+        handleSearchChange={(event) => {
+          setSearchValue(event.target.value);
+        }}
       />
       {page === "home" && (
         <>
@@ -73,7 +78,7 @@ function App() {
             <div className="flex flex-col items-center justify-center h-full gap-2  mb-6">
               <h2 className="text-lg font-semibold ">No prompts found</h2>
               <span className="text-muted-foreground">
-                Select another collection or add a prompt to this collection.
+                Try adjusting your search or select another collection.
               </span>
             </div>
           )}
