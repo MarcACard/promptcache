@@ -1,13 +1,12 @@
-import { Plus, ArrowLeft } from "lucide-react";
+import { Plus, ArrowLeft, Search } from "lucide-react";
 
 import { PopupMenu } from "@/components/popup-menu";
 import { Button } from "@/components/ui/button";
-import {
-  PromptCacheIcon,
-  PromptCacheWordmark,
-} from "@/components/ui/promptcache-icon";
+import { Input } from "@/components/ui/input";
+
 
 import { Prompt } from "@/types";
+
 
 interface PopupHeaderProps {
   page: "home" | "form";
@@ -31,9 +30,9 @@ export function PopupHeader({
   };
 
   return (
-    <div className="flex items-center justify-between p-2 border-b">
-      <div className="flex items-center">
-        <PromptCacheWordmark className="h-7 text-black" />
+    <div className="flex items-center justify-between p-2 border-b gap-24">
+      <div className="flex-1 rounded-md border border-input">
+        <Input className="border-transparent text-sm h-8" placeholder="Search..." />        
       </div>
       <div className="flex gap-2">
         <PopupMenu />

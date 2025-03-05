@@ -1,17 +1,15 @@
-import { PromptCacheIcon } from "@/components/ui/promptcache-icon";
+import { PromptCacheWordmarkPanda } from "@/components/ui/promptcache-icon";
 import { Arrow, ArrowTwist } from "@/components/ui/arrow";
 
 export function PopupWelcome() {
   return (
     <>
-      <div className="flex justify-center items-center h-full">
-        <div>
-          <p className="text-base font-semibold text-center">
-            Your prompt library, stored in browser, always available.
-          </p>
+      <div className="flex flex-col gap-2 justify-center items-center h-full mb-10">
+        <PromptCacheWordmarkPanda className="h-10" />
+        <div className="text-base font-semibold text-center">
+          Your prompt library, stored in browser, always available.
         </div>
       </div>
-      {/* TODO: Helper Tips on Welcome */}
       <Arrow
         size="lg"
         className="text-muted-foreground absolute right-14 top-[55px] -rotate- scale-x-[-1]"
