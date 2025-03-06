@@ -1,6 +1,6 @@
 {
   "name": "promptcache",
-  "description": "",
+  "description": "A web extension for saving, organizing, and reusing AI prompts",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -14,6 +14,8 @@
     "compile": "tsc --noEmit",
     "postinstall": "wxt prepare"
   },
+  "author": "Marc Anthony Card (https://www.marcacard.com/)",
+  "license": "MIT",
   "dependencies": {
     "@icons-pack/react-simple-icons": "^12.1.0",
     "@radix-ui/react-context-menu": "^2.2.5",
