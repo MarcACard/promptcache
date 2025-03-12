@@ -1,0 +1,118 @@
+name: Extension Release & Deploy
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "apps/extension/**"
+      - "pnpm-lock.yaml"
+
+  workflow_dispatch:
+    inputs:
+      dryRun:
+        type: boolean
+        description: "Skip store submission (dry run)?"
+        default: false
+      skipVersionCheck:
+        type: boolean
+        description: "Skip version check validation?"
+        default: false
+
+jobs:
+  version-check:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.get_version.outputs.version }}
+      version_changed: ${{ steps.check_version.outputs.version_changed }}
+      should_publish: ${{ steps.should_publish.outputs.should_publish }}
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get Current Version
+        id: get_version
+        run: |
+          VERSION=$(jq -r .version apps/extension/package.json)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Check for version change
+        id: check_version
+        run: |
+          if git diff --name-only HEAD~1..HEAD | grep -q '^apps/extension/package\.json$'; then
+            OLD_VERSION=$(git show HEAD~1:apps/extension/package.json | jq -r .version)
+            CURRENT_VERSION=$(jq -r .version apps/extension/package.json)
+
+            if [ "$OLD_VERSION" != "$CURRENT_VERSION" ]; then
+              echo "Version changed from $OLD_VERSION to $CURRENT_VERSION"
+              echo "version_changed=1" >> $GITHUB_OUTPUT
+            else
+              echo "package.json changed but version remained the same"
+              echo "version_changed=0" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "No changes to package.json"
+            echo "version_changed=0" >> $GITHUB_OUTPUT
+          fi  
+      
+      - name: Should Publish
+        id: should_publish
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ] && [ "${{ github.event.inputs.skipVersionCheck }}" == "true" ]; then
+            echo "Manual run with version check skipped - proceed with publish"
+            echo "should_publish=1" >> $GITHUB_OUTPUT
+          elif [ "${{ steps.check_version.outputs.version_changed }}" == "1" ]; then
+            echo "Version changed - proceeding with publish"
+            echo "should_publish=1" >> $GITHUB_OUTPUT
+          else
+            echo "No version change or manual override - skipping publish"
+            echo "should_publish=0" >> $GITHUB_OUTPUT
+          fi
+
+  build-and-publish:
+    name: Build & Publish (If package version changed)
+    needs: version-check
+    if: ${{ needs.version-check.outputs.should_publish == '1' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Install Dependencies
+        run: pnpm install --filter=promptcache
+
+      - name: Build, Zip, and Submit to Stores
+        run: |
+          DRY_RUN= "${{ github.event.inputs.dryRun }}"
+          VERSION= "${{ needs.version-check.outputs.version }}"
+
+          if [ -z "$DRY_RUN" ]; then
+            DRY_RUN="false"
+          fi
+
+          if [ "$DRY_RUN" = "true" ]; then
+            echo "DRY RUN - Not submitting to stores"
+            pnpm wxt submit --dry-run --chrome-zip apps/extension/.dist/promptcache-${VERSION}-chrome.zip
+          else
+            echo "Submitting version ${VERSION} to Chrome Web Store"
+            pnpm wxt submit --chrome-zip apps/extension/.dist/promptcache-${VERSION}-chrome.zip
+          fi
+
+        env:
+          CHROME_EXTENSION_ID: ${{secrets.CHROME_EXTENSION_ID }}
+          CHROME_CLIENT_ID: ${{ secrets.CHROME_CLIENT_ID }}
+          CHROME_CLIENT_SECRET: ${{ secrets.CHROME_CLIENT_SECRET }}
+          CHROME_REFRESH_TOKEN: ${{ secrets.CHROME_REFRESH_TOKEN }}
