@@ -110,10 +110,10 @@ jobs:
 
           if [ "$DRY_RUN" = "true" ]; then
             echo "DRY RUN - Not submitting to stores"
-            pnpm wxt submit --dry-run --chrome-zip .dist/promptcache-${VERSION}-chrome.zip
+            pnpm wxt submit --dry-run --chrome-zip dist/promptcache-${VERSION}-chrome.zip
           else
             echo "Submitting version ${VERSION} to Chrome Web Store"
-            pnpm wxt submit --chrome-zip .dist/promptcache-${VERSION}-chrome.zip
+            pnpm wxt submit --chrome-zip dist/promptcache-${VERSION}-chrome.zip
           fi
 
         env:
