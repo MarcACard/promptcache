@@ -99,8 +99,8 @@ jobs:
 
       - name: Submit to Stores
         run: |
-          DRY_RUN= "${{ github.event.inputs.dryRun }}"
-          VERSION= "${{ needs.version-check.outputs.version }}"
+          DRY_RUN="${{ github.event.inputs.dryRun }}"
+          VERSION="${{ needs.version-check.outputs.version }}"
 
           cd apps/extension
 
