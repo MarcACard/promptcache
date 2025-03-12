@@ -3,8 +3,9 @@
   "private": true,
   "scripts": {
     "dev:extension": "pnpm --filter promptcache dev",
-    "dev:www": "pnpm --filter www dev",
     "build:extension": "pnpm --filter promptcache build",
+    "zip:extension": "pnpm --filter promptcache zip",
+    "dev:www": "pnpm --filter www dev",
     "build:www": "pnpm --filter www build"
   }
 }

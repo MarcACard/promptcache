@@ -56,8 +56,8 @@ jobs:
           else
             echo "No changes to package.json"
             echo "version_changed=0" >> $GITHUB_OUTPUT
-          fi  
-      
+          fi
+
       - name: Should Publish
         id: should_publish
         run: |
@@ -94,10 +94,15 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --filter=promptcache
 
-      - name: Build, Zip, and Submit to Stores
+      - name: Build & Zip
+        run: pnpm zip:extension
+
+      - name: Submit to Stores
         run: |
           DRY_RUN= "${{ github.event.inputs.dryRun }}"
           VERSION= "${{ needs.version-check.outputs.version }}"
+
+          cd apps/extension
 
           if [ -z "$DRY_RUN" ]; then
             DRY_RUN="false"
@@ -105,10 +110,10 @@ jobs:
 
           if [ "$DRY_RUN" = "true" ]; then
             echo "DRY RUN - Not submitting to stores"
-            pnpm wxt submit --dry-run --chrome-zip apps/extension/.dist/promptcache-${VERSION}-chrome.zip
+            pnpm wxt submit --dry-run --chrome-zip .dist/promptcache-${VERSION}-chrome.zip
           else
             echo "Submitting version ${VERSION} to Chrome Web Store"
-            pnpm wxt submit --chrome-zip apps/extension/.dist/promptcache-${VERSION}-chrome.zip
+            pnpm wxt submit --chrome-zip .dist/promptcache-${VERSION}-chrome.zip
           fi
 
         env:
