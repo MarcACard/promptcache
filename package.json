@@ -1,5 +1,6 @@
 {
   "name": "promptcachce-monorepo",
+  "packageManager": "pnpm@10.2.1",
   "private": true,
   "scripts": {
     "dev:extension": "pnpm --filter promptcache dev",
