@@ -35,11 +35,11 @@ export default function Home() {
             </div>
             <div className="flex items-center justify-center">
               <div className="relative w-full max-w-lg shadow-xl rounded-lg overflow-hidden border border-neutral-200">
-                {/* TODO: Swap out with real image */}
                 <Image
                   src={extPopup}
                   alt="PromptCache Interface"
                   className="w-full h-auto"
+                  priority
                 />
               </div>
             </div>
