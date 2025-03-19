@@ -6,11 +6,12 @@ export function Footer() {
           <div className="text-neutral-400 text-sm">
             © {new Date().getFullYear()} PromptCache. All rights reserved.
           </div>
-          <div className="text-sm text-neutral-400 hover:text-inherit">
+          <div className="text-sm text-neutral-400">
             Made by{" "}
             <a
               href="https://www.marcacard.com/?ref=promptcache.ai"
               target="_blank"
+              className="hover:text-foreground"
             >
               Marc Anthony Card
             </a>
