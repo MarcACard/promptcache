@@ -12,7 +12,7 @@ export default function Home() {
 
       <main>
         <section className="container mx-auto px-6 z-[10]">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 py-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 py-8 lg:py-16">
             <div className="flex flex-col justify-center items-center lg:items-start">
               <h1 className="text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tighter text-center lg:text-left">
                 Your Personal AI Prompt Library
@@ -35,11 +35,11 @@ export default function Home() {
             </div>
             <div className="flex items-center justify-center">
               <div className="relative w-full max-w-lg shadow-xl rounded-lg overflow-hidden border border-neutral-200">
-                {/* TODO: Swap out with real image */}
                 <Image
                   src={extPopup}
                   alt="PromptCache Interface"
                   className="w-full h-auto"
+                  priority
                 />
               </div>
             </div>

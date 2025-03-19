@@ -2,7 +2,7 @@ export function Footer() {
   return (
     <footer className="pb-4">
       <div className="container mx-auto px-6">
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="text-neutral-400 text-sm">
             © {new Date().getFullYear()} PromptCache. All rights reserved.
           </div>
