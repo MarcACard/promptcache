@@ -1,4 +1,4 @@
-import Link from "next/Link";
+import Link from "next/link";
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { PromptCacheWordmarkPanda } from "./prompt-cache-branding";
 

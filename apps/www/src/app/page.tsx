@@ -1,4 +1,4 @@
-import Image from "next/Image";
+import Image from "next/image";
 import { SiGooglechrome } from "@icons-pack/react-simple-icons";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
