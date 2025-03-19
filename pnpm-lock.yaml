@@ -101,6 +101,9 @@ importers:
 
   apps/www:
     dependencies:
+      '@icons-pack/react-simple-icons':
+        specifier: ^12.1.0
+        version: 12.2.0(react@19.0.0)
       next:
         specifier: 15.2.1
         version: 15.2.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -4827,6 +4830,10 @@ snapshots:
   '@icons-pack/react-simple-icons@12.2.0(react@18.3.1)':
     dependencies:
       react: 18.3.1
+
+  '@icons-pack/react-simple-icons@12.2.0(react@19.0.0)':
+    dependencies:
+      react: 19.0.0
 
   '@img/sharp-darwin-arm64@0.33.5':
     optionalDependencies:
