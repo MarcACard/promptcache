@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "PromptCache.ai | Your Personal AI Prompt Library.",
+  title: "PromptCache | Your Personal AI Prompt Library.",
   description: "Save, organize, and access your best prompts anywhere.",
 };
 
