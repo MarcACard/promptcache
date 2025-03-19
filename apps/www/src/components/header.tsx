@@ -7,9 +7,14 @@ export function Header() {
     <header>
       <div className="container mx-auto p-5">
         <div className="flex items-center justify-between">
-          <Link href="/">
-            <PromptCacheWordmarkPanda className="h-7" />
-          </Link>
+          <div className="flex items-center">
+            <Link href="/">
+              <PromptCacheWordmarkPanda className="h-7" />
+            </Link>
+            <span className="ml-2 text-xs font-bold tracking-wider px-2 py-1 rounded-lg bg-linear-to-t from-neutral-200 to-neutral-10 text-neutral-600 shadow-xs inset-shadow-xs">
+              BETA
+            </span>
+          </div>
           <nav className="flex items-center gap-6">
             {/* <Link
               href="/changelog"
