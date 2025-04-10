@@ -120,8 +120,8 @@ export function PopupMenu() {
           <span>Help</span>
           <DropdownMenuShortcut>?</DropdownMenuShortcut>
         </DropdownMenuItem>
-        {/* <DropdownMenuSeparator />
-        <ThemeSelector /> */}
+        <DropdownMenuSeparator />
+        <ThemeSelector />
       </DropdownMenuContent>
     </DropdownMenu>
   );
