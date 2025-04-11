@@ -121,7 +121,8 @@ export function PopupMenu() {
           <SiX />
           <span>Say hello</span>
         </DropdownMenuItem>
-        {/* <DropdownMenuItem>
+        {/* TODO: Finish Help Modal
+        <DropdownMenuItem>
           <LifeBuoy />
           <span>Help</span>
           <DropdownMenuShortcut>?</DropdownMenuShortcut>
