@@ -39,28 +39,34 @@ function ThemeSelector() {
         <Tabs value={theme} onValueChange={(value) => setTheme(value as Theme)}>
           <TabsList className="h-9">
             <Tooltip>
-              <TooltipTrigger>
-                <TabsTrigger value="light">
-                  <Sun className="size-4" />
-                </TabsTrigger>
+              <TooltipTrigger asChild>
+                <div>
+                  <TabsTrigger value="light">
+                    <Sun className="size-4" />
+                  </TabsTrigger>
+                </div>
               </TooltipTrigger>
               <TooltipContent side="bottom">Light mode</TooltipContent>
             </Tooltip>
 
             <Tooltip>
-              <TooltipTrigger>
-                <TabsTrigger value="dark">
-                  <Moon className="size-4" />
-                </TabsTrigger>
+              <TooltipTrigger asChild>
+                <div>
+                  <TabsTrigger value="dark">
+                    <Moon className="size-4" />
+                  </TabsTrigger>
+                </div>
               </TooltipTrigger>
               <TooltipContent side="bottom">Dark mode</TooltipContent>
             </Tooltip>
 
             <Tooltip>
-              <TooltipTrigger>
-                <TabsTrigger value="system">
-                  <Monitor className="size-4" />
-                </TabsTrigger>
+              <TooltipTrigger asChild>
+                <div>
+                  <TabsTrigger value="system">
+                    <Monitor className="size-4" />
+                  </TabsTrigger>
+                </div>
               </TooltipTrigger>
               <TooltipContent side="bottom">System mode</TooltipContent>
             </Tooltip>
@@ -115,13 +121,14 @@ export function PopupMenu() {
           <SiX />
           <span>Say hello</span>
         </DropdownMenuItem>
+        {/* TODO: Finish Help Modal
         <DropdownMenuItem>
           <LifeBuoy />
           <span>Help</span>
           <DropdownMenuShortcut>?</DropdownMenuShortcut>
-        </DropdownMenuItem>
-        {/* <DropdownMenuSeparator />
-        <ThemeSelector /> */}
+        </DropdownMenuItem> */}
+        <DropdownMenuSeparator />
+        <ThemeSelector />
       </DropdownMenuContent>
     </DropdownMenu>
   );

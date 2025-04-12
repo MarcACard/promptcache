@@ -26,7 +26,7 @@ export function ThemeProvider({
   defaultTheme = "system",
   ...props
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useStorageSync<Theme>(StorageKeys.THEME, "system");
+  const [theme, setTheme] = useStorageSync<Theme>(StorageKeys.THEME, defaultTheme);
 
   useEffect(() => {
     const root = window.document.documentElement;
