@@ -1,17 +1,35 @@
-# PromptCache
+<div align="center">
+    <img src="./docs/Wordmark-Dark.png#gh-dark-mode-only">
+    <img src="./docs/Wordmark-Light.png#gh-light-mode-only">
+</div>
+<div align="center">
+  <h3>Your Personal AI Prompt Library 📚</h3>
+  <a href="https://www.promptcache.ai?ref=github.com">Website</a> •
+  <a href="https://chromewebstore.google.com/detail/promptcache-your-personal/noncjdenienejpdlakheodnglfdcifoe">Chrome Web Store</a>
+</div>
+<br/>
 
-## Overview
+### What is PromptCache?
 
-PromptCache is a local-first web extension allowing users to save, organize, and quickly insert prompts into AI chat UIs.
+PromptCache is a local-first web extension allowing users to save, organize, and quickly reuse prompts with any AI web application.
+
+This is a **monorepo** housing both the extension and the marketing website.
+
+### Project Structure
+
+```
+apps/
+    extension/  # The browser extension
+    www/        # The marketing site
+```
 
 ### Tech Stack
 
-- [WXT](https://wxt.dev/)
-- [React](https://react.dev/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [shadcn/ui](https://ui.shadcn.com/)
+- **Extension:** WXT, React, Shadcn/UI, TailwindCSS, Github Actions (deployment)
+- **Website:** Next.js, Shadcn/UI, TailwindCSS, Deployed on Vercel
+- **Monorepo:** PNPM Workspaces
 
-## Setup
+### Getting Started
 
 To run the extension locally for development.
 
@@ -31,13 +49,14 @@ pnpm install
 3. Start the development build
 
 ```sh
-pnpm dev
+# Can be run from project root
+# Extension
+pnpm dev:extension
+
+# Marketing Site
+pnpm dev:www
 ```
 
-4. [Load unpacked extension](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked) into Chrome
-
-- Built extension can be found within `dist/chrome-mv3`
-
-## License
+### License
 
 This project is licensed under the MIT License. See [LICENSE](https://github.com/MarcACard/promptcache/blob/main/LICENSE.txt) for details.
