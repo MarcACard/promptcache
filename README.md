@@ -1,6 +1,6 @@
 <div align="center">
-    <img src="./docs/Wordmark-Dark.png#gh-dark-mode-only">
-    <img src="./docs/Wordmark-Light.png#gh-light-mode-only">
+    <img src="./docs/Wordmark-Dark.svg#gh-dark-mode-only" width="600" alt="PromptCache Wordmark">
+    <img src="./docs/Wordmark-Light.svg#gh-light-mode-only" width="600" alt="PromptCache Wordmark">
 </div>
 <div align="center">
   <h3>Your Personal AI Prompt Library 📚</h3>
