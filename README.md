@@ -57,6 +57,18 @@ pnpm dev:extension
 pnpm dev:www
 ```
 
+### Build Extension
+
+This extension supports builds for both Chrome and Firefox. The following commands can be executed within the `apps/extension` subdirectory. A build of of the extension will be contained within `apps/extension/dist`
+
+```sh
+# Chrome
+pnpm build
+
+# Firefox
+pnpm build:firefox
+```
+
 ### License
 
 This project is licensed under the MIT License. See [LICENSE](https://github.com/MarcACard/promptcache/blob/main/LICENSE.txt) for details.
