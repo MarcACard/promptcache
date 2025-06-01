@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { SiGooglechrome } from "@icons-pack/react-simple-icons";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { BrowserCTA } from "@/components/browser-cta";
 
 import extPopup from "../../public/images/popup-sample.png"
 
@@ -21,16 +21,8 @@ export default function Home() {
                 A browser extension to save, organize, and reuse your best
                 prompts anywhere.
               </p>
-              {/* TODO: Determine button based on browser? - later */}
               <div className="mt-8">
-                <a
-                  href="https://chromewebstore.google.com/detail/promptcache-your-personal/noncjdenienejpdlakheodnglfdcifoe"
-                  target="_blank"
-                  className="rounded font-bold bg-radial-[at_50%_110%] from-foreground/80 to-[#000] transition-transform hover:scale-[1.05] text-background px-5 py-3 flex items-center shadow-sm hover:shadow-lg transition-shadow"
-                >
-                  <SiGooglechrome className="mr-2 size-5" />
-                  <span>Add to Chrome</span>
-                </a>
+                <BrowserCTA />
               </div>
             </div>
             <div className="flex items-center justify-center">
